@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="${base}/script/ajaxfileupload.js"></script>
+</head>
+<body>
+<input id="uploadFile" name="uploadFile" type="file" accept="image/*" onchange="fileupload();" style="display:inline-block; margin-right:10px;">
+<script type="text/javascript">
+function fileupload(){
+	
+	var upload  = jQuery("#uploadFile")[0];
+	jQuery.ajaxFileUpload({
+		url:'',
+		secureuri:false,
+		fileElementId:'uploadFile',
+		success:function(data){
+			if(data.status==1){
+				var assest ="$!{velocityTool.getFileUrl()}"+data.message;
+				$("#preview").attr('src',assest);
+				$("#img").val(data.message);
+			} else {
+				alert(data.message);
+			}
+			
+		}
+		
+	})
+};
+</script>
+</body>
+</html>

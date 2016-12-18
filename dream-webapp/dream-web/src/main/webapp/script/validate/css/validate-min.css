@@ -1,0 +1,10 @@
+#vtip{word-wrap:break-word; word-break:break-all;position:absolute;padding:10px;left:5px;line-height:24px;font-size:12px;background-color:#fdfdd9;border:1px solid #a6c9e2;-moz-border-radius:5px;-webkit-border-radius:5px;z-index:9999;}
+#vtip #vtipArrow{position:absolute;top:-10px;left:5px;}
+.input_validation-failed{border:1px solid #F00 !important;}
+.vtipArrowUp{background:url("../images/vtip_arrow.png") no-repeat;width:21px;height:11px;_background-image:url("../images/vtip_arrow.gif");}
+.vtipArrowDown{background:url("../images/vtip_arrow_d.png") no-repeat;width:21px;height:11px;_background-image:url("../images/vtip_arrow_d.gif");}
+/*系统异常*/
+.descTitle,.descContent{
+	color:#333 !important;
+	font-family:Microsoft Yahei !important;
+}

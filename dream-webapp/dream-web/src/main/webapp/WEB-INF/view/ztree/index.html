@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<!-- ztree -->
+<script type="text/javascript" src="${base}/script/jquery-1.10.2.js"></script>
+<link rel="stylesheet" type="text/css" href="${base}/script/zTree_v3/skins/metroStyle/metroStyle.css" />
+<script src="${base}/script/zTree_v3/js/jquery.ztree.all-3.5.min.js" type="text/javascript" charset="utf-8"></script>
+
+<title>ztree</title>
+</head>
+<body>
+<div class="w-40 ztree-div mr-2">
+				<ul id="ztree" class="ztree"></ul>
+			</div>
+<script type="text/javascript">
+var load = true;
+var setting = {
+		basePath: "${base}",
+		view: {
+			dblClickExpand: dblClickExpand
+		},
+		data: {
+			simpleData: {
+				idKey: "id",
+				pIdKey: "parentId",
+				rootPId: "0"
+			}
+		},
+		async: {
+			enable: true,
+			url:"${base}/ztree/queryDepts.do",
+			autoParam:["id=parentId"]
+		},
+		callback:{
+			onClick:function(event, treeId, treeNode, clickFlag){
+				
+			},
+			onAsyncSuccess:function(event, treeId, treeNode, msg) { 
+				
+			},
+			beforeClick:function(treeId, treeNode){
+				
+			}
+		}
+		
+	};
+	
+function dblClickExpand(treeId, treeNode)
+{
+	return treeNode.level > 0;
+}
+	
+var deptTree = $.fn.zTree.init($("#ztree"), setting, ${dataJson});
+</script>
+</body>
+</html>

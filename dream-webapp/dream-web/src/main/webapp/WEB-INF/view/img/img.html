@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="${base}/script/jquery-1.10.2.js"></script>
+	</head>
+
+	<body>
+		<input type="file" id="fileUpload" />
+		<div id="list-view"></div>
+		<script>
+			$('#fileUpload').change(function() {
+				return change(this, 'file-one');
+			});
+
+			function change(obj, itemId) {
+ 				var a = URL.createObjectURL(obj.files[0]);
+				var urla = obj.files[0];
+				var template = '<img src="'+a+'" height="100%" >图片有吗';
+				$('#list-view').append(template.replace('{src}', URL.createObjectURL(obj.files[0])));
+			}
+		</script>
+	</body>
+
+</html>

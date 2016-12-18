@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type="text/javascript" src="${base}/script/jquery-1.10.2.js"></script>
+<!-- dataTable -->
+<script type="text/javascript" src="${base}/script/dataTables/jquery.dataTables.js"></script>
+<script type="text/javascript" src="${base}/script/dataTablesWrap.js"></script>
+<link rel="stylesheet" type="text/css" href="${base}/script/dataTables/jquery.dataTables.min.css" />
+<link rel="stylesheet" type="text/css" href="${base}/script/dataTables/css/jquery.dataTables_theme.css" />
+<title>dataTable Demo</title>
+</head>
+<body>
+<div class="table-list content-bianju">
+	<table class="table" id="ajaxDataTable" >
+		<thead>
+			<tr>
+				<th style="width:5%;min-width:20px;">序号</th>
+				<th style="width:20%;min-width:200px;">姓名</th>
+				<th style="width:20%;min-width:100px;">密码</th>
+				<th style="width:10%;min-width:100px;">性别</th>
+				<th style="width:10%;min-width:100px;">邮箱</th>
+			</tr>
+		</thead>
+		<tbody>
+			
+		</tbody>
+	</table>
+	
+</div>
+<script type="text/javascript">
+var table = dataTablesWrap({
+	render: '#ajaxDataTable',
+	basePath:'${base}',
+	displayLength:5,
+	url:'${base}/datatable/list.do',
+	data: function(req){
+		/* $('#dataFrm [name]').each(function(i, n){
+			req[$(n).attr('name')] = n.value;
+		}); */
+	},
+	columns:[
+		{
+			data:'userName',
+			sortable:true,
+			render:function (data, type, full, meta) {
+				return data;
+		    }
+		},
+		{
+			data:'password',
+			sortable:true,
+			render:function (data, type, full, meta) {
+				return data;
+			}
+		},
+        {
+			data:'sex',
+			render:function (data, type, full, meta) {
+				return data || '--';
+            }
+		}
+		,
+        {
+			data:'email',
+			render:function (data, type, full, meta) {
+				return data || '--';
+            }
+		}
+ 		]
+	});
+</script>
+
+</body>
+</html>

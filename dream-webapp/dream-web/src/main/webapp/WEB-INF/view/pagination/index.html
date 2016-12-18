@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="${base}/script/pagination/pagination.css" />
+<script type="text/javascript" src="${base}/script/jquery-1.10.2.js"></script>
+<script type="text/javascript" src="${base}/script/pagination/jquery.pagination.js"></script>
+<!-- dataTable -->
+<title>pagination Demo</title>
+</head>
+<body>
+<div class="table-list content-bianju">
+	<table class="table" id="ajaxDataTable" >
+		<thead>
+			<tr>
+				<th style="width:5%;min-width:20px;">序号</th>
+				<th style="width:20%;min-width:200px;">姓名</th>
+				<th style="width:20%;min-width:100px;">密码</th>
+				<th style="width:10%;min-width:100px;">性别</th>
+				<th style="width:10%;min-width:100px;">邮箱</th>
+			</tr>
+		</thead>
+		<tbody id="pageData">
+			<#include "index-list-page.html"/>
+		</tbody>
+	</table>
+<div id="pagination" class="pagination"><!-- 这里显示分页 --></div>
+</div>
+<script type="text/javascript">
+//刷新分页或分页跳转
+initPagination(1);
+           
+//var curentPageNo = 1;
+function initPagination(pageNo) {
+    var totalCount = $("#totalCount").val();
+    var totalPage = $("#totalPage").val();
+    var pageSize = $("#pageSize").val();
+    if(pageNo > totalPage){
+    	refreshPage(totalPage);
+    	return;
+    }
+    //curentPageNo = pageNo;
+    $("#pagination").pagination(totalCount, {
+        callback: pageselectCallback,
+        prev_text: "上一页",
+        next_text: "下一页 ",
+        items_per_page:pageSize,//
+        num_edge_entries: 2,//两侧首尾分页条目数
+        num_display_entries: 8,//连续分页主体部分分页条目数
+        current_page:pageNo-1//当前页索引
+    });
+}
+
+//分页组件回调函数
+function pageselectCallback(pageIndex, jq){
+	refreshPage(pageIndex+1);
+	return true;
+}
+
+function refreshPage(pageNo){
+	$.ajax({
+		url: "${base}/pagination/list.do",
+		async: false,
+		type:"post", 
+		data: {pageNo:pageNo,pageSize:5},
+		success: function(result,code,dd) {
+			$("#pageData").html(result);
+			//initPagination(pageNo);
+		},
+		error:function(){
+			alert("操作失败");
+		}
+	});
+   return false;
+}
+</script>
+
+</body>
+</html>

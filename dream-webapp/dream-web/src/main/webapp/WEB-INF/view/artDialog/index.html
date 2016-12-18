@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>artDialog</title>
+<script type="text/javascript" src="${base}/script/jquery-1.10.2.js"></script>
+<script type="text/javascript" src="${base}/script/artDialog_v4.1.7/artDialog.source.js?skin=default"></script>
+<script type="text/javascript" src="${base}/script/artDialog_v4.1.7/plugins/iframeTools.js"></script>
+<script type="text/javascript" src="${base}/script/artDialog_v4.1.7/plugins/utils.js"></script>
+<!-- <script type="text/javascript" src="${base}/script/utils.js"></script> -->
+
+</head>
+<body>
+<input type="button" name="btn" value="点击出现弹出框" onclick="toDialog()">
+<input type="button" name="btn" value="点击出现可以操作的弹出框" onclick="toDialog2()">
+<script type="text/javascript">
+	function toDialog() {
+		var win = art.dialog.top;
+		openDialog({
+				title: "编辑",
+				width:800,
+				height:500,
+				url:"${base}/artdialog/toDialog.do",
+				padding:0,
+				okVal:"确定",
+				ok:function(){
+					
+					return true;
+					
+				},
+				cancel:true
+				
+			})
+	};
+	
+	function toDialog2() {
+		var win = art.dialog.top;
+		openDialog({
+				title: "编辑",
+				width:800,
+				height:500,
+				ajaxUrl:"${base}/artdialog/toDialog.do",
+				ajaxSuccess:function() {
+					$("#span").text("这文字是加上去的");
+				},
+				padding:0,
+				okVal:"确定",
+				ok:function(){
+					
+				},
+				cancel:true
+				
+			})
+	}
+</script>
+</body>
+</html>

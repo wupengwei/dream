@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type="text/javascript" src="${base}/script/jquery-1.10.2.js"></script>
+<script type="text/javascript" src="${base}/script/select2/select2.js"></script>
+
+<script type="text/javascript" src="${base}/script/artDialog_v4.1.7/artDialog.source.js?skin=default"></script>
+<script type="text/javascript" src="${base}/script/artDialog_v4.1.7/plugins/iframeTools.js"></script>
+<script type="text/javascript" src="${base}/script/artDialog_v4.1.7/plugins/utils.js"></script>
+<title>select2Demo</title>
+</head>
+<body>
+<form action="">
+<input autocomplete="off" type="text" id="guestsBank" tabindex="-1" class="form-control select2-offscreen" value="">
+<input type="button" value="弹出层" onclick="tanchu()">
+</form>
+<script type="text/javascript">
+
+		function tanchu() {
+			openDialog({
+				title: "编辑",
+				width:800,
+				height:500,
+				ajaxUrl:"${base}/select2/goDialog.do",
+				ajaxSuccess:function(){
+					selectAjax("tanchu","请选择嘉宾")
+				},
+				padding:0,
+				okVal:"确定",
+				ok:function(){
+					
+					return true;
+					
+				},
+				cancel:true
+				
+			})
+		}
+
+		function selectAjax(id, placeholderString) {
+			$("#" + id).select2({
+				placeholder : placeholderString,
+				/* initSelection : function(element, callback) {
+					var idValue = $(element).val();
+					var textValue = $(element).attr("name");
+					if (idValue != '' && textValue != '') {
+						callback({
+							id : idValue,
+							text : textValue
+						});
+					}
+				}, */
+				minimumInputLength : 0,
+				maximumInputLength : 100,
+				ajax : {
+					url : "${base}/select2/queryData.do",
+					type : 'post',
+					dataType : 'json',
+					delay : 250,
+					data : function(params) {
+						return {
+							'name' : params
+						};
+					},
+					results : function(data) {
+						/* var admins = $.parseJSON(data);
+						var result = {};
+						result["results"] = admins;
+						return result; */
+						//alert(data.dd)
+						var result = {};
+						result["results"] = data;
+						return result;
+					},
+					cache : true
+				}
+			});
+		}
+		
+		selectAjax("guestsBank","请选择嘉宾")
+	</script>
+</body>
+</html>

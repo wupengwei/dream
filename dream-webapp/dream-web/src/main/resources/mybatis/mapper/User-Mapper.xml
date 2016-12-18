@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.wpw.dream.dao.impl.UserDaoImpl">
+	<resultMap id="userEntityMapper" type="user">
+		<id property="id" column="id" />
+		<result property="userName" column="userName" />
+		<result property="password" column="password" />
+		<result property="sex" column="sex" />
+		<result property="email" column="email" />
+	</resultMap>
+	
+	<select id="listBy" parameterType="map" resultMap="userEntityMapper">
+		select * from user  
+		<where>
+			<if test="userName != null">
+				userName like CONCAT('%', #{userName}, '%')
+			</if>
+		</where>
+	</select>
+</mapper>

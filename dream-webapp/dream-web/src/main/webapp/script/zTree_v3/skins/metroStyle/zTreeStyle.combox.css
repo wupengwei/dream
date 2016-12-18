@@ -1,0 +1,57 @@
+.ztree li a {
+	color: #333
+}
+.ztree_combox {
+	position: fixed;
+	background:none repeat scroll 0 0 #fff;
+	border-style: none solid solid;
+    border-width: medium 1px 1px;
+    border-radius: 0 0 4px 4px;
+    margin-top: -2px;
+    box-shadow: 0 4px 5px rgba(0, 0, 0, 0.15);
+    border-color: #ccc;
+	color:#468847;
+	overflow:hidden; 
+	width:400px;
+	padding-bottom:0;
+	padding: 0 4px;
+}
+
+.ztree_combox .content {
+	position:relative;
+	height:230px;
+	overflow:auto
+}
+
+.ztree_combox .toolbar {
+	position:relative;
+	border-top: 1px solid #C6C6C6;
+	width:100%;
+	line-height: 30px;
+	padding-top:6px;
+	height:40px;
+	margin-bottom:0
+	
+}
+
+.ztree_combox .toolbar .inner {
+	
+}
+
+.ztree_combox .toolbar .inner a {
+	display:block;
+	float:right;
+	position:relative;
+	width:30px;
+	overflow:hidden;
+	line-height:25px;
+	height:25px
+}
+
+.ztree_combox .disabled {
+	cursor:not-allowed
+}
+.curSelectedNode .light { color: #fff; }
+.light {
+	color: #1caf9a;
+}
