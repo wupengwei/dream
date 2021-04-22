@@ -37,7 +37,7 @@
 		<freemarker.version>2.3.20</freemarker.version>
 		<com.github.pagehelper.pagehelper.version>4.0.0</com.github.pagehelper.pagehelper.version>
 		<com.github.jsqlparser.jsqlparser.version>0.9.1</com.github.jsqlparser.jsqlparser.version>
-		<mybatis.version>3.2.8</mybatis.version>
+		<mybatis.version>3.5.6</mybatis.version>
 		<mybatis-spring.version>1.1.0</mybatis-spring.version>
 		<mysql.connector.version>5.1.14</mysql.connector.version>
 		<aspectjweaver.version>1.8.8</aspectjweaver.version>
