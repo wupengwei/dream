@@ -17,7 +17,7 @@
 	<properties>
 		<dream-version>0.0.1-SNAPSHOT</dream-version>
 
-		<dubbo.version>2.5.3</dubbo.version>
+		<dubbo.version>2.6.9</dubbo.version>
 		<zookeeper.version>3.3.6</zookeeper.version>
 		<zkclient.version>0.4</zkclient.version>
 
